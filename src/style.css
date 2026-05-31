@@ -1,0 +1,402 @@
+/* 
+  src/style.css 
+  English with Jeronimo - Landing Page
+*/
+
+:root {
+  /* Variáveis de Cor: Facilita mudar a identidade visual em um só lugar */
+  --primary: #FFA500;       /* Laranja dos Cards */
+  --primary-hover: #e69500;
+  --bg-dark: #121212;      /* Grafite Profissional */
+  --bg-card: #1e1e1e;
+  --text-main: #ffffff;
+  --text-dim: #cccccc;
+  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* 1. RESET: Remove estilos padrões dos navegadores */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth; /* Rolagem suave ao clicar nos links */
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-main);
+  line-height: 1.6;
+}
+
+/* 2. LAYOUT: Header e Navegação */
+header {
+  padding: 1.5rem 5%;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background: rgba(18, 18, 18, 0.95);
+  backdrop-filter: blur(10px); /* Efeito de vidro jateado moderno */
+  z-index: 1000;
+  border-bottom: 1px solid #333;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: -1px;
+}
+
+/* 3. HERO SECTION: Impacto Inicial */
+#hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 5%;
+  background: linear-gradient(rgba(18, 18, 18, 0.7), rgba(18, 18, 18, 0.7)), 
+              url('/assets/hero-bg.png'); /* Imagem RAW da Aula 01 */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Efeito Parallax suave */
+}
+
+.hero-content {
+  max-width: 800px;
+}
+
+#hero h1 {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  font-weight: 900;
+}
+
+.highlight {
+  color: var(--primary);
+}
+
+#hero p {
+  font-size: 1.25rem;
+  color: var(--text-dim);
+  margin-bottom: 2.5rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* 4. BOTÕES: Design de Autoridade */
+.btn-primary, .btn-secondary, .btn-small, .btn-large {
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: #000;
+  padding: 1rem 2rem;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(255, 165, 0, 0.2);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #444;
+  padding: 1rem 2rem;
+}
+
+.btn-secondary:hover {
+  border-color: var(--primary);
+}
+
+.btn-small {
+  background-color: var(--primary);
+  color: #000;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+}
+
+/* 5. MÉTODO: Grid de Diferenciais */
+#metodo {
+  padding: 100px 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#metodo h2 {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.grid-metodo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.card-metodo {
+  background-color: var(--bg-card);
+  padding: 2.5rem;
+  border-radius: 16px;
+  text-align: left;
+  border: 1px solid #333;
+  transition: border-color 0.3s ease;
+}
+
+.card-metodo:hover {
+  border-color: var(--primary);
+}
+
+.card-metodo h3 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+/* 6. SOBRE O PROFESSOR */
+#professor {
+  padding: 100px 5%;
+  background-color: #1a1a1a;
+}
+
+.professor-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  text-align: left;
+}
+
+.professor-image {
+  flex-shrink: 0;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--primary);
+  box-shadow: 0 0 30px rgba(255, 165, 0, 0.2);
+}
+
+.professor-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.professor-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.professor-text p {
+  font-size: 1.1rem;
+  color: var(--text-dim);
+  margin-bottom: 1.2rem;
+}
+
+/* 7. VITRINE DE AULAS */
+#aulas {
+  padding: 100px 5%;
+  background-color: #000;
+  text-align: center;
+}
+
+#aulas h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: var(--text-dim);
+  margin-bottom: 4rem;
+  font-size: 1.1rem;
+}
+
+.grid-aulas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card-aula {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  border: 1px solid #222;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card-aula img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.aula-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  background: linear-gradient(transparent, rgba(0,0,0,0.9));
+  text-align: left;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.aula-info span {
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.aula-info h4 {
+  font-size: 1.2rem;
+  margin-top: 0.3rem;
+}
+
+.card-aula:hover {
+  transform: scale(1.05);
+  border-color: var(--primary);
+}
+
+.card-aula:hover .aula-info {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* 7. FAQ SECTION */
+#faq {
+  padding: 100px 5%;
+  background-color: #121212;
+}
+
+.faq-container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#faq h2 {
+  font-size: 2.5rem;
+  margin-bottom: 4rem;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 3rem;
+  text-align: left;
+}
+
+.faq-item h4 {
+  color: var(--primary);
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.faq-item p {
+  color: var(--text-dim);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* 8. DIAGNÓSTICO E FOOTER */
+#diagnostico {
+  padding: 100px 5%;
+  background-color: #1a1a1a;
+  text-align: center;
+}
+
+.cta-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.btn-large {
+  background-color: var(--primary);
+  color: #000;
+  padding: 1.2rem 3rem;
+  font-size: 1.2rem;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  border: none;
+}
+
+.availability-badge {
+  display: inline-block;
+  background-color: rgba(255, 165, 0, 0.1);
+  color: var(--primary);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  border: 1px solid rgba(255, 165, 0, 0.3);
+}
+
+footer {
+  padding: 3rem 5%;
+  text-align: center;
+  border-top: 1px solid #333;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* 7. RESPONSIVIDADE: Ajustes para Celular */
+@media (max-width: 768px) {
+  #hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-actions {
+    flex-direction: column;
+  }
+  
+  header .btn-small {
+    display: none; /* Esconde o botão do header no mobile para dar espaço */
+  }
+}
+
+/* Ajustes mobile para seção do professor */
+@media (max-width: 768px) {
+  .professor-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+  .professor-image {
+    width: 200px;
+    height: 200px;
+  }
+}
