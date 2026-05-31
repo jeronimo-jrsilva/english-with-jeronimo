@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EWJ Student Portal | Demo</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #f59e0b;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --text: #334155;
+            --border: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--light);
+            color: var(--text);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        header {
+            background-color: var(--dark);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid var(--secondary);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: -2rem auto 2rem;
+            padding: 0 1rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border);
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 1.5rem;
+        }
+
+        .progress-bar {
+            background: #e2e8f0;
+            border-radius: 999px;
+            height: 12px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+
+        .progress-fill {
+            background: var(--primary);
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+
+        h2 {
+            color: var(--dark);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+
+        .class-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .class-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .class-item:last-child { border-bottom: none; }
+
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .status-completed { background: #dcfce7; color: #166534; }
+        .status-scheduled { background: #fef3c7; color: #92400e; }
+
+        .glossary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .term-card {
+            border-left: 4px solid var(--primary);
+            padding-left: 1rem;
+        }
+
+        .term-card b { display: block; color: var(--primary); }
+        .term-card small { color: #64748b; font-style: italic; }
+
+        .cta-section {
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+
+        .btn {
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: transform 0.2s;
+        }
+
+        .btn:hover { transform: translateY(-2px); }
+
+        @media (max-width: 768px) {
+            .profile-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>EWJ Student Portal</h1>
+    <p>Sua jornada estratégica rumo à fluência</p>
+</header>
+
+<div class="container">
+    <div class="card profile-grid">
+        <div>
+            <h2 id="student-name">Carregando...</h2>
+            <p><strong>Nível:</strong> <span id="student-level">-</span></p>
+            <p><strong>Foco:</strong> <span id="student-objective">-</span></p>
+        </div>
+        <div>
+            <h3>Progresso do Módulo</h3>
+            <div class="progress-bar">
+                <div id="progress-fill" class="progress-fill" style="width: 0%"></div>
+            </div>
+            <p><small>Você completou <span id="progress-text">0</span>% deste nível.</small></p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Próximas Lições</h2>
+        <div id="class-list" class="class-list">
+            <!-- Injected by JS -->
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Seu Glossário Personalizado</h2>
+        <div id="glossary-grid" class="glossary-grid">
+            <!-- Injected by JS -->
+        </div>
+    </div>
+
+    <div class="cta-section">
+        <p>Pronto para transformar seu inglês em uma ferramenta de poder?</p>
+        <a href="https://jeronimo-jrsilva.github.io/english-with-jeronimo/" class="btn">AGENDAR MEU DIAGNÓSTICO</a>
+    </div>
+</div>
+
+<script>
+    fetch('data.json')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('student-name').textContent = data.student_name;
+            document.getElementById('student-level').textContent = data.level;
+            document.getElementById('student-objective').textContent = data.objective;
+            document.getElementById('progress-fill').style.width = data.progress + '%';
+            document.getElementById('progress-text').textContent = data.progress;
+
+            const classList = document.getElementById('class-list');
+            data.classes.forEach(c => {
+                const item = document.createElement('div');
+                item.className = 'class-item';
+                item.innerHTML = `
+                    <div>
+                        <strong>${new Date(c.date).toLocaleDateString('pt-BR')}</strong> - ${c.topic}
+                    </div>
+                    <span class="status-badge status-${c.status}">
+                        ${c.status === 'completed' ? 'Concluída' : 'Agendada'}
+                    </span>
+                `;
+                classList.appendChild(item);
+            });
+
+            const glossaryGrid = document.getElementById('glossary-grid');
+            data.glossary.forEach(g => {
+                const term = document.createElement('div');
+                term.className = 'term-card';
+                term.innerHTML = `
+                    <b>${g.term}</b>
+                    <small>${g.category}</small>
+                    <p>${g.definition}</p>
+                `;
+                glossaryGrid.appendChild(term);
+            });
+        });
+</script>
+
+</body>
+</html>

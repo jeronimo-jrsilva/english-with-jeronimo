@@ -1,0 +1,35 @@
+{
+  "student_name": "John Doe (Demo)",
+  "level": "Intermediate (B1)",
+  "objective": "English for International Career & Tech",
+  "progress": 65,
+  "next_class": "2026-06-02T10:00:00",
+  "classes": [
+    {
+      "id": 1,
+      "date": "2026-05-20",
+      "topic": "The Art of the Stand-up Meeting",
+      "status": "completed",
+      "link": "#"
+    },
+    {
+      "id": 2,
+      "date": "2026-05-27",
+      "topic": "Negotiating Deadlines & Expectations",
+      "status": "completed",
+      "link": "#"
+    },
+    {
+      "id": 3,
+      "date": "2026-06-02",
+      "topic": "Strategic Linkers for Presentations",
+      "status": "scheduled",
+      "link": "#"
+    }
+  ],
+  "glossary": [
+    { "term": "Stakes", "definition": "The risks or rewards involved in a situation.", "category": "Business" },
+    { "term": "Bottleneck", "definition": "A stage in a process that causes delay.", "category": "Process" },
+    { "term": "Leverage", "definition": "To use something to maximum advantage.", "category": "Strategy" }
+  ]
+}
