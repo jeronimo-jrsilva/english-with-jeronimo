@@ -8,7 +8,7 @@
         :root {
             --primary: #2563eb;
             --secondary: #f59e0b;
-            --dark: #1e293b;
+            --dark: #0f172a; /* Azul escuro da LP */
             --light: #f8fafc;
             --text: #334155;
             --border: #e2e8f0;
@@ -25,44 +25,44 @@
         header {
             background-color: var(--dark);
             color: white;
-            padding: 2rem 1rem;
+            padding: 3rem 1rem;
             text-align: center;
             border-bottom: 4px solid var(--secondary);
         }
 
         .container {
             max-width: 1000px;
-            margin: -2rem auto 2rem;
+            margin: -3rem auto 3rem;
             padding: 0 1rem;
         }
 
         .card {
             background: white;
             border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
             border: 1px solid var(--border);
         }
 
         .profile-grid {
             display: grid;
             grid-template-columns: 1fr 2fr;
-            gap: 1.5rem;
+            gap: 2rem;
         }
 
         .progress-bar {
             background: #e2e8f0;
             border-radius: 999px;
-            height: 12px;
+            height: 16px;
             overflow: hidden;
-            margin-top: 0.5rem;
+            margin-top: 1rem;
         }
 
         .progress-fill {
-            background: var(--primary);
+            background: linear-gradient(90deg, var(--primary), #3b82f6);
             height: 100%;
-            transition: width 0.3s ease;
+            transition: width 1s ease-in-out;
         }
 
         h2 {
@@ -70,6 +70,9 @@
             border-bottom: 2px solid var(--border);
             padding-bottom: 0.5rem;
             margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .class-list {
@@ -81,7 +84,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem;
+            padding: 1.25rem;
             border-bottom: 1px solid var(--border);
         }
 
@@ -90,8 +93,9 @@
         .status-badge {
             padding: 0.25rem 0.75rem;
             border-radius: 999px;
-            font-size: 0.875rem;
-            font-weight: 600;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
         }
 
         .status-completed { background: #dcfce7; color: #166534; }
@@ -99,35 +103,65 @@
 
         .glossary-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
         }
 
         .term-card {
-            border-left: 4px solid var(--primary);
-            padding-left: 1rem;
+            background: #f1f5f9;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border-left: 5px solid var(--primary);
         }
 
-        .term-card b { display: block; color: var(--primary); }
-        .term-card small { color: #64748b; font-style: italic; }
+        .term-card b { display: block; color: var(--primary); font-size: 1.1rem; }
+        .term-card small { color: #64748b; font-weight: 600; text-transform: uppercase; font-size: 0.75rem; }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .price-card {
+            text-align: center;
+            padding: 1.5rem;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            transition: border-color 0.3s;
+        }
+
+        .price-card.featured {
+            border-color: var(--secondary);
+            background: #fffdf7;
+        }
 
         .cta-section {
             text-align: center;
-            padding: 3rem 1rem;
+            padding: 4rem 1rem;
+            background: var(--dark);
+            color: white;
+            border-radius: 12px;
+            margin-top: 2rem;
         }
 
         .btn {
             background: var(--secondary);
             color: var(--dark);
-            padding: 1rem 2rem;
+            padding: 1.25rem 2.5rem;
             border-radius: 8px;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 800;
             display: inline-block;
-            transition: transform 0.2s;
+            transition: all 0.2s;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2);
         }
 
-        .btn:hover { transform: translateY(-2px); }
+        .btn:hover { 
+            transform: scale(1.05);
+            background: #eab308;
+        }
 
         @media (max-width: 768px) {
             .profile-grid { grid-template-columns: 1fr; }
@@ -138,82 +172,105 @@
 
 <header>
     <h1>EWJ Student Portal</h1>
-    <p>Sua jornada estratégica rumo à fluência</p>
+    <p>Área de Acompanhamento Estratégico</p>
 </header>
 
 <div class="container">
     <div class="card profile-grid">
         <div>
-            <h2 id="student-name">Carregando...</h2>
-            <p><strong>Nível:</strong> <span id="student-level">-</span></p>
-            <p><strong>Foco:</strong> <span id="student-objective">-</span></p>
+            <h2 id="student-name">...</h2>
+            <p><strong>Nível Atual:</strong> <span id="student-level">-</span></p>
+            <p><strong>Foco de Carreira:</strong> <span id="student-objective">-</span></p>
         </div>
         <div>
-            <h3>Progresso do Módulo</h3>
+            <h3>Progresso do Nível</h3>
             <div class="progress-bar">
                 <div id="progress-fill" class="progress-fill" style="width: 0%"></div>
             </div>
-            <p><small>Você completou <span id="progress-text">0</span>% deste nível.</small></p>
+            <p><small>Atingindo a meta de fluência: <span id="progress-text">0</span>%</small></p>
         </div>
     </div>
 
     <div class="card">
-        <h2>Próximas Lições</h2>
+        <h2>📅 Próximas Lições (Datas Dinâmicas)</h2>
         <div id="class-list" class="class-list">
             <!-- Injected by JS -->
         </div>
     </div>
 
     <div class="card">
-        <h2>Seu Glossário Personalizado</h2>
+        <h2>🧠 Glossário Ativo</h2>
         <div id="glossary-grid" class="glossary-grid">
             <!-- Injected by JS -->
         </div>
     </div>
 
-    <div class="card">
-        <h2>Planos e Investimento</h2>
-        <p>Recompensamos o seu compromisso com a fluência através de descontos progressivos por volume de aulas semanais.</p>
-        <div class="glossary-grid">
-            <div class="term-card">
-                <b>Plano Lite (1x/sem)</b>
-                <p>R$ 400/mês<br><small>Foco em manutenção</small></p>
+    <div class="card" id="pricing">
+        <h2>🏷️ Planos de Investimento</h2>
+        <p>Acelere sua evolução com descontos progressivos por volume de aulas semanais.</p>
+        <div class="pricing-grid">
+            <div class="price-card">
+                <b>Plano Lite</b>
+                <p>1 aula/semana</p>
+                <div style="font-size: 1.5rem; font-weight: bold;">R$ 400<small>/mês</small></div>
             </div>
-            <div class="term-card" style="border-left-color: var(--secondary);">
-                <b>Plano Focus (2x/sem)</b>
-                <p>R$ 720/mês <span class="status-badge status-completed">10% OFF</span><br><small>Aceleração recomendada</small></p>
+            <div class="price-card featured">
+                <b>Plano Focus</b>
+                <p>2 aulas/semana</p>
+                <div style="font-size: 1.5rem; font-weight: bold;">R$ 720<small>/mês</small></div>
+                <span class="status-badge status-completed">10% OFF</span>
             </div>
-            <div class="term-card" style="border-left-color: var(--secondary);">
-                <b>Plano Intense (3x/sem)</b>
-                <p>R$ 1.020/mês <span class="status-badge status-completed">15% OFF</span><br><small>Imersão estratégica</small></p>
+            <div class="price-card">
+                <b>Plano Intense</b>
+                <p>3 aulas/semana</p>
+                <div style="font-size: 1.5rem; font-weight: bold;">R$ 1.020<small>/mês</small></div>
+                <span class="status-badge status-completed">15% OFF</span>
             </div>
         </div>
-        <p><small>* Pagamento via PIX Antecipado. Política de cancelamento: mínimo 12h de antecedência para reposição.</small></p>
+        <p style="text-align: center; margin-top: 1.5rem;"><small>* Pagamento via PIX Antecipado. Reposições com 12h de aviso.</small></p>
     </div>
 
     <div class="cta-section">
-        <p>Pronto para transformar seu inglês em uma ferramenta de poder?</p>
-        <a href="https://jeronimo-jrsilva.github.io/english-with-jeronimo/" class="btn">AGENDAR MEU DIAGNÓSTICO</a>
+        <h2>Deseja um portal como este para o seu inglês?</h2>
+        <p>Inicie seu diagnóstico gratuito e descubra sua trilha personalizada.</p>
+        <br>
+        <a href="https://jeronimo-jrsilva.github.io/english-with-jeronimo/" class="btn">QUERO MEU DIAGNÓSTICO</a>
     </div>
 </div>
 
 <script>
+    // Gerador de datas dinâmicas para a demo
+    function getFutureDate(daysOut) {
+        const d = new Date();
+        d.setDate(d.getDate() + daysOut);
+        return d.toLocaleDateString('pt-BR');
+    }
+
+    const demoClasses = [
+        { topic: "The Art of the Stand-up Meeting", status: "completed", date: "Ontem" },
+        { topic: "Negotiating Deadlines & Expectations", status: "scheduled", date: getFutureDate(2) },
+        { topic: "Strategic Linkers for Presentations", status: "scheduled", date: getFutureDate(5) }
+    ];
+
     fetch('data.json')
         .then(response => response.json())
         .then(data => {
             document.getElementById('student-name').textContent = data.student_name;
             document.getElementById('student-level').textContent = data.level;
             document.getElementById('student-objective').textContent = data.objective;
-            document.getElementById('progress-fill').style.width = data.progress + '%';
-            document.getElementById('progress-text').textContent = data.progress;
+            
+            setTimeout(() => {
+                document.getElementById('progress-fill').style.width = data.progress + '%';
+                document.getElementById('progress-text').textContent = data.progress;
+            }, 500);
 
             const classList = document.getElementById('class-list');
-            data.classes.forEach(c => {
+            demoClasses.forEach(c => {
                 const item = document.createElement('div');
                 item.className = 'class-item';
                 item.innerHTML = `
                     <div>
-                        <strong>${new Date(c.date).toLocaleDateString('pt-BR')}</strong> - ${c.topic}
+                        <strong>${c.date}</strong> - ${c.topic}
                     </div>
                     <span class="status-badge status-${c.status}">
                         ${c.status === 'completed' ? 'Concluída' : 'Agendada'}
