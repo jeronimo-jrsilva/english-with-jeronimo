@@ -331,7 +331,86 @@ nav {
   line-height: 1.6;
 }
 
-/* 8. DIAGNÓSTICO E FOOTER */
+/* 8. PORTAL DO ALUNO: Destaque da Experiência */
+#portal {
+  padding: 100px 5%;
+  background-color: #0f172a; /* Azul escuro combinando com a Demo */
+  text-align: center;
+}
+
+.portal-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+#portal h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.portal-content {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  text-align: left;
+  margin-top: 3rem;
+}
+
+.portal-text {
+  flex: 1;
+}
+
+.portal-text p {
+  font-size: 1.1rem;
+  color: var(--text-dim);
+  margin-bottom: 1.5rem;
+}
+
+.portal-features {
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
+.portal-features li {
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+.portal-features li::before {
+  content: '✓';
+  color: var(--primary);
+  font-weight: 900;
+}
+
+.portal-preview {
+  flex: 1;
+  background: var(--bg-card);
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid #333;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.portal-preview img {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .portal-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .portal-features li {
+    justify-content: center;
+  }
+}
+
+/* 9. DIAGNÓSTICO E FOOTER */
 #diagnostico {
   padding: 100px 5%;
   background-color: #1a1a1a;
