@@ -4,6 +4,6 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   base: '/english-with-jeronimo/',
   build: {
-    outDir: 'dist',
+    outDir: 'docs',
   }
 })
